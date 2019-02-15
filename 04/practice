@@ -1,0 +1,25 @@
+import numpy as np
+persontype=np.dtype({'names':['name', 'chinese', 'math', 'english'],'formats':['S32','i', 'i', 'i']})
+peoples=np.array([ ('zhangfei', 66, 65, 30),
+            ('guanyu', 95, 85, 98),
+            ('zhaoyun', 93, 92, 96),
+            ('huangzhong', 90, 88, 77),
+            ("dianwei", 80, 90, 90)
+        ], dtype=persontype)
+name=peoples[:]['name']
+chineses = peoples[:]['chinese']
+maths = peoples[:]['math']
+englishs = peoples[:]['english']
+# 语文、英语、数学中的平均成绩、最小成绩、最大成绩、方差、标准差
+def show(name,cj):
+    print(name," |",np.mean(cj)," | ",np.min(cj)," | ",np.max(cj)," | ",np.var(cj)," | ",np.std(cj))
+
+print("科目 | 平均成绩 | 最小成绩 | 最大成绩 | 方差 | 标准差")
+show("语文", chineses)
+show("英语", englishs)
+show("数学", maths)
+
+print("排名:")
+#用sorted函数进行排序
+ranking = sorted(peoples,key=lambda x:x[1]+x[2]+x[3], reverse=True)
+print(ranking)
